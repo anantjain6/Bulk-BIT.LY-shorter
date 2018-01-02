@@ -2,7 +2,7 @@
 
 /* returns the shortened url */
 function get_bitly_short_url($url,$login='XXXXXXXXXXXXXXX',$appkey='XXXXXXXXXXXXXXXXX',$format='txt') {
-	$connectURL = 'http://api.bit.ly/v3/shorten?login='.$login.'&apiKey='.$appkey.'&uri='.urlencode($url).'&format='.$format;
+	$connectURL = 'http://api.bit.ly/v3/shorten?login='.$login.'&apiKey='.$appkey.'&uri='.urlencode(trim(preg_replace('/\s\s+/', ' ', $url))).'&format='.$format;
 	return curl_get_result($connectURL);
 }
 
